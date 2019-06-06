@@ -12,23 +12,34 @@ namespace Tp_9
     {
         static void Main(string[] args)
         {
-            string path = @"E:\Taller 1\Repositorios Git\tp-nro9-Arzenus\Tp 9\Tp 9\bin\Debug";
+            string localizacion = "";
 
-            string[] archivos = Directory.GetFiles(path);
+            //string path = @"E:\Taller 1\Repositorios Git\tp-nro9-Arzenus\Tp 9\Tp 9\bin\Debug";
 
-            for (int i = 0; i < archivos.Length; i++)
-            {
-                Console.Write(Path.GetFileName(archivos[i]));
-                Console.Write("\n");
-            }
+            // string[] archivos = Directory.GetFiles(path);
 
-            for (int i = 0; i < archivos.Length; i++)
-            {
-                if (Path.GetExtension(archivos[i]) == ".exe")
-                {
-                    Console.Write("Es exe\n");
-                }
-            }
+            /*  for (int i = 0; i < archivos.Length; i++)
+              {
+                  Console.Write(Path.GetFileName(archivos[i]));
+                  Console.Write("\n");
+              }
+
+              for (int i = 0; i < archivos.Length; i++)
+              {
+                  if (Path.GetExtension(archivos[i]) == ".exe")
+                  {
+                      Console.Write("Es exe\n");
+                  }
+              }*/
+
+            SoporteParaConfiguracion.CrearArchivoDeConfiguracion();
+
+            localizacion = SoporteParaConfiguracion.LeerConfiguracion();
+
+            SoporteParaConfiguracion.TextoAMorse(localizacion);
+
+            SoporteParaConfiguracion.MorseATexto(localizacion);
+
 
             Console.ReadKey();
         }

@@ -43,17 +43,15 @@ namespace Helpers
 
             string fraseConvertida = "";
 
-            FileStream archivoTexto;
-
             StreamWriter archivoCreado;
 
-            archivoTexto = new FileStream("Morse: "+DateTime.Today+".txt", FileMode.Create);
-
-            File.Move(@"Morse: " + DateTime.Today + ".txt", localizacion + "Morse: " + DateTime.Today + ".txt");
-
-            archivoTexto.Close();
+            FileStream archivoTexto = new FileStream(localizacion + "\\Morse= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt", FileMode.Create);
             
-            Console.Write("Ingrese una frase EN MINUSCULAS que desee codificar");
+            archivoTexto.Close();
+
+            //File.Move(@"Morse= " + DateTime.Today + ".txt", localizacion + @"\Morse= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
+            
+            Console.Write("Ingrese una frase EN MINUSCULAS que desee codificar: ");
 
             frase = Console.ReadLine();
             
@@ -229,13 +227,194 @@ namespace Helpers
 
             }
 
-            archivoCreado = new StreamWriter(localizacion + "Morse: " + DateTime.Today + ".txt");
+            archivoCreado = new StreamWriter(localizacion + "\\Morse= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
 
             archivoCreado.Write(fraseConvertida);
 
             archivoCreado.Close();
-          
+        }
 
+        public static void MorseATexto(string localizacion)
+        {
+            string linea = "";
+
+            string textoMorse;
+
+            string fraseTraducida = "";
+
+            StreamWriter archivoCreado;
+
+            FileStream textoTraducido = new FileStream(localizacion + "\\Texto= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt", FileMode.Create);
+
+            //File.Move(@"Texto= " + DateTime.Today + ".txt", localizacion + @"\Texto= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
+
+            textoTraducido.Close();
+
+            StreamReader archivoTexto = new StreamReader(localizacion + "\\Morse= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
+            textoMorse = archivoTexto.ReadToEnd();
+
+            for(int i= 0; i< textoMorse.Length; i++)
+            {
+                if(textoMorse[i] == '5')
+                {
+                    switch(linea)
+                    {
+                        case ".-":
+                            Console.Write("a");
+                            fraseTraducida = fraseTraducida + 'a';
+                            break;
+
+                        case "-...":
+                            Console.Write("b");
+                            fraseTraducida = fraseTraducida + 'b';
+                            break;
+
+                        case "-.-.":
+                            Console.Write("c");
+                            fraseTraducida = fraseTraducida + 'c';
+                            break;
+
+                        case "-..":
+                            Console.Write("d");
+                            fraseTraducida = fraseTraducida + 'd';
+                            break;
+
+                        case ".":
+                            Console.Write("e");
+                            fraseTraducida = fraseTraducida + 'e';
+                            break;
+
+                        case "..-.":
+                            Console.Write("f");
+                            fraseTraducida = fraseTraducida + 'f';
+                            break;
+
+                        case "--.":
+                            Console.Write("g");
+                            fraseTraducida = fraseTraducida + 'g';
+                            break;
+
+                        case "....":
+                            Console.Write("h");
+                            fraseTraducida = fraseTraducida + 'h';
+                            break;
+
+                        case "..":
+                            Console.Write("i");
+                            fraseTraducida = fraseTraducida + 'i';
+                            break;
+
+                        case ".---":
+                            Console.Write("j");
+                            fraseTraducida = fraseTraducida + 'j';
+                            break;
+
+                        case "-.-":
+                            Console.Write("k");
+                            fraseTraducida = fraseTraducida + 'k';
+                            break;
+
+                        case ".-..":
+                            Console.Write("l");
+                            fraseTraducida = fraseTraducida + 'l';
+                            break;
+
+                        case "--":
+                            Console.Write("m");
+                            fraseTraducida = fraseTraducida + 'm';
+                            break;
+
+                        case "-.":
+                            Console.Write("n");
+                            fraseTraducida = fraseTraducida + 'n';
+                            break;
+
+                        case "---":
+                            Console.Write("o");
+                            fraseTraducida = fraseTraducida + 'o';
+                            break;
+
+                        case ".--.":
+                            Console.Write("p");
+                            fraseTraducida = fraseTraducida + 'p';
+                            break;
+
+                        case "--.-":
+                            Console.Write("q");
+                            fraseTraducida = fraseTraducida + 'q';
+                            break;
+
+                        case ".-.":
+                            Console.Write("r");
+                            fraseTraducida = fraseTraducida + 'r';
+                            break;
+
+                        case "...":
+                            Console.Write("s");
+                            fraseTraducida = fraseTraducida + 's';
+                            break;
+
+                        case "-":
+                            Console.Write("t");
+                            fraseTraducida = fraseTraducida + 't';
+                            break;
+
+                        case "..-":
+                            Console.Write("u");
+                            fraseTraducida = fraseTraducida + 'u';
+                            break;
+
+                        case "...-":
+                            Console.Write("v");
+                            fraseTraducida = fraseTraducida + 'v';
+                            break;
+
+                        case ".--":
+                            Console.Write("w");
+                            fraseTraducida = fraseTraducida + 'w';
+                            break;
+
+                        case "-..-":
+                            Console.Write("x");
+                            fraseTraducida = fraseTraducida + 'x';
+                            break;
+
+                        case "-.--":
+                            Console.Write("y");
+                            fraseTraducida = fraseTraducida + 'y';
+                            break;
+
+                        case "--..":
+                            Console.Write("z");
+                            fraseTraducida = fraseTraducida + 'z';
+                            break;
+                    }
+
+                    linea = "";
+                }
+
+                if (textoMorse[i] == '6')
+                {
+                    Console.Write(" ");
+                    fraseTraducida = fraseTraducida + ' ';
+
+                    linea = "";
+                }
+
+                else
+                {
+                    if (textoMorse[i] != '5')
+                    {
+                        linea = linea + textoMorse[i];
+                    }
+                }
+            }
+
+            archivoCreado = new StreamWriter(localizacion + "\\Texto= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
+
+            archivoCreado.Write(fraseTraducida);
+
+            archivoCreado.Close();
         }
     }
 }
