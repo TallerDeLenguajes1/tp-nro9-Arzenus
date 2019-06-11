@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using WMPLib;
 
 namespace Helpers
 {
@@ -415,6 +416,33 @@ namespace Helpers
             archivoCreado.Write(fraseTraducida);
 
             archivoCreado.Close();
+        }
+
+        public static void MorseAAudio(string localizacion)
+        {
+            string codigoMorse;
+
+            WindowsMediaPlayer reproductor = new WindowsMediaPlayer();
+
+            StreamReader archivoTexto = new StreamReader(localizacion + "\\Morse= " + DateTime.Today.ToString("dddd, dd MMMM yyyy") + ".txt");
+            codigoMorse = archivoTexto.ReadToEnd();
+
+            for (int i = 0; i< codigoMorse.Length; i ++)
+            {
+                if (codigoMorse[i] != '5')
+                {
+                    if (codigoMorse[i] == '-')
+                    {
+                        reproductor.URL = "raya.mp3";
+                        reproductor.controls.play();
+                    }
+                    if (codigoMorse[i] == '.')
+                    {
+                        reproductor.URL = "punto.mp3";
+                        reproductor.controls.play();
+                    }
+                }
+            }
         }
     }
 }
