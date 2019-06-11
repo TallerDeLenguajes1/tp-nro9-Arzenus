@@ -441,6 +441,8 @@ namespace Helpers
                         reproductor.URL = "punto.mp3";
                         reproductor.controls.play();
                     }
+
+                    //Cargar el mp3 en un binario, concatenar todos los puntos/rayas, guardar
                 }
             }
         }
